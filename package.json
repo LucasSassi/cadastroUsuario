@@ -1,0 +1,24 @@
+{
+  "dependencies": {
+    "prompt-sync": "^4.2.0"
+  },
+  "name": "cadastrodeusuario",
+  "version": "1.0.0",
+  "description": "",
+  "main": "adicionarUsuario.js",
+  "type": "module",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LucasSassi/cadastroUsuario.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LucasSassi/cadastroUsuario/issues"
+  },
+  "homepage": "https://github.com/LucasSassi/cadastroUsuario#readme"
+}
