@@ -75,17 +75,10 @@ export function atualizarUsuario() {
         if (isNaN(novoTelefone) || novoTelefone.length !== 11) {
           console.log("Numero invalido! Digite um telefone com 11 digitos.");
         } else {
-          const telefoneExistente = Usuarios.some((usuario) =>
-            usuario.telefones.includes(novoTelefone)
-          );
-          if (telefoneExistente) {
-            console.log("Este numero já está cadastrado.");
-          } else {
-            UsuarioParaAtualizar.telefones.push(novoTelefone);
-            console.log("Telefone adicionado com sucesso!");
-            numeroAdicionarValido = true;
-            telefoneValido = true;
-          }
+          UsuarioParaAtualizar.telefones.push(novoTelefone);
+          console.log("Telefone adicionado com sucesso!");
+          numeroAdicionarValido = true;
+          telefoneValido = true;
         }
       }
     } else if (opcaoTelefone === "remover") {
@@ -125,17 +118,10 @@ export function atualizarUsuario() {
           if (isNaN(novoNumero) || novoNumero.length !== 11) {
             console.log("Numero invalido! Digite um telefone com 11 digitos.");
           } else {
-            const telefoneExistente = Usuarios.some((usuario) =>
-              usuario.telefones.includes(novoNumero)
-            );
-            if (telefoneExistente) {
-              console.log("Este numero já está cadastrado.");
-            } else {
-              UsuarioParaAtualizar.telefones[indexAtualizar] = novoNumero;
-              console.log("Telefone atualizado com sucesso!");
-              numeroAtualizarValido = true;
-              telefoneValido = true;
-            }
+            UsuarioParaAtualizar.telefones[indexAtualizar] = novoNumero;
+            console.log("Telefone atualizado com sucesso!");
+            numeroAtualizarValido = true;
+            telefoneValido = true;
           }
         }
       }
