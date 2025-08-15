@@ -3,11 +3,14 @@ import { Usuarios, exibirMenu, prompt } from "./menu.js";
 export function removerUsuario() {
   console.log("=========CONTATOS=========");
   Usuarios.forEach((usuario) => {
+    let telefonesFormatados = usuario.telefones.map(telefone =>
+      `(${telefone.substring(0, 2)})${telefone.substring(2, 7)}-${telefone.substring(7)}`
+    ).join(', ');
+
     console.log(
-      `ID: ${usuario.id}, Nome: ${usuario.nome}, Telefone: ${usuario.telefone}, Email: ${usuario.email}`
+      `ID: ${usuario.id}, Nome: ${usuario.nome}, Telefones: ${telefonesFormatados}, Email: ${usuario.email}`
     );
   });
-
   console.log("Qual o ID do usuario que deseja remover?: ");
   let idSelecionado = prompt("> ");
   idSelecionado = parseInt(idSelecionado);

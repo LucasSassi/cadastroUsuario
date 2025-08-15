@@ -3,17 +3,19 @@ import { Usuarios, exibirMenu, prompt } from "./menu.js";
 export function listarUsuario() {
   console.clear();
 
-  if (Usuarios.length == 0) {
-    console.log("===NENHUM usuario registrado!!===");
+  if (Usuarios.length === 0) {
+    console.log("===NENHUM USUÁRIO REGISTRADO!===");
     exibirMenu();
   } else {
-    console.log("=========USUARIOS=========");
+    console.log("=========USUÁRIOS=========");
 
     Usuarios.forEach((usuario) => {
-      const telefoneFormatado = `(${usuario.telefone.substring(0, 2)})${usuario.telefone.substring(2, 7)}-${usuario.telefone.substring(7)}`;
+      let telefonesFormatados = usuario.telefones.map(telefone =>
+        `(${telefone.substring(0, 2)})${telefone.substring(2, 7)}-${telefone.substring(7)}`
+      ).join(', ');
 
       console.log(
-        `ID: ${usuario.id}, Nome: ${usuario.nome}, Telefone: ${telefoneFormatado}, Email: ${usuario.email}`
+        `ID: ${usuario.id}, Nome: ${usuario.nome}, Telefones: ${telefonesFormatados}, Email: ${usuario.email}`
       );
     });
 

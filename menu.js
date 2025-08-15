@@ -31,9 +31,11 @@ export function exibirMenu() {
         removerUsuario();
         break;
       case 0:
+        console.clear()
         process.exit();
         break;
       default:
+        console.clear()
         console.log("Insira uma opção válida!\n");
         exibirMenu();
     }

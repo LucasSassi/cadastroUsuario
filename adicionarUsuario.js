@@ -5,51 +5,48 @@ export function adicionarUsuario() {
   console.log("Qual o nome do contato que deseja adicionar?: ");
   let nome = prompt("> ");
 
-  console.log("Qual o telefone do contato que deseja adicionar? (com DDD): ");
-  let telefone = prompt("> ");
+  let telefones = [];
+  let adicionarMais = true;
 
-  if (isNaN(telefone) || telefone.length != 11) {
-    console.clear();
-    console.log("Digite um numero valido!!");
-    adicionarUsuario();
-    return;
+  while (adicionarMais) {
+    console.log("Qual o telefone do contato? (com DDD, 11 dígitos): ");
+    let telefone = prompt("> ");
+
+    if (isNaN(telefone) || telefone.length !== 11) {
+      console.log("Número inválido. Digite 11 dígitos numéricos.");
+      continue;
+    }
+
+    telefones.push(telefone);
+
+    console.log("Deseja adicionar outro telefone? (s/n)");
+    let resposta = prompt("> ").toLowerCase();
+    if (resposta !== 's') {
+      adicionarMais = false;
+    }
   }
 
-  const telefoneExistente = Usuarios.some(
-    (usuario) => usuario.telefone === telefone
-  );
-
-  if (telefoneExistente) {
-    console.clear();
-    console.log(
-      "Este numero de telefone ja esta cadastrado. Por favor, tente novamente."
-    );
-    adicionarUsuario();
+  let email;
+  let emailInvalido = true;
+  while (emailInvalido) {
+    console.log("Qual o email do contato que deseja adicionar?: ");
+    email = prompt("> ");
+    const emailExistente = Usuarios.some((usuario) => usuario.email === email);
+    if (emailExistente) {
+      console.log("Este email já está cadastrado. Por favor, tente novamente.");
+    } else {
+      emailInvalido = false;
+    }
   }
-
-  console.log("Qual o email do contato que deseja adicionar?: ");
-  let email = prompt("> ");
-
-  const emailExistente = Usuarios.some((usuario) => usuario.email === email);
-  if (emailExistente) {
-    console.clear();
-    console.log("Este email ja esta cadastrado. Por favor, tente novamente.");
-    adicionarUsuario();
-  }
-
-  let id;
-  do {
-    id = Date.now();
-  } while (Usuarios.some((usuario) => usuario.id === id));
 
   Usuarios.push({
-    id,
+    id: Date.now(),
     nome,
-    telefone,
+    telefones,
     email,
   });
 
   console.clear();
-  console.log("===Usuario adicionado com sucesso!!===");
+  console.log("===Usuário adicionado com sucesso!!===");
   exibirMenu();
 }
